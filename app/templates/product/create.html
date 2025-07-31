@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Crear Producto{% endblock %}
+{% block content %}
+<h1>Nuevo Producto</h1>
+<form method="post">
+    Nombre: <input type="text" name="productName"><br>
+    Proveedor ID: <input type="text" name="supplierId"><br>
+    Categoría ID: <input type="text" name="categoryId"><br>
+    Cantidad por unidad: <input type="text" name="quantityPerUnit"><br>
+    Precio: <input type="text" name="unitPrice"><br>
+    Stock: <input type="text" name="unitsInStock"><br>
+    En pedido: <input type="text" name="unitsOnOrder"><br>
+    Nivel de reorden: <input type="text" name="reorderLevel"><br>
+    Discontinuado (S/N): <input type="text" name="discontinued"><br>
+    <button type="submit">Guardar</button>
+</form>
+<a href="{{ url_for('product.list_products') }}">Volver</a>
+{% endblock %}

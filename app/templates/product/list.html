@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Productos{% endblock %}
+{% block content %}
+<h1>Productos</h1>
+<a href="{{ url_for('product.create') }}">Crear nuevo producto</a>
+<table border="1">
+    <tr>
+        <th>ID</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Acciones</th>
+    </tr>
+    {% for p in products %}
+    <tr>
+        <td>{{ p.productId }}</td>
+        <td>{{ p.productName }}</td>
+        <td>{{ p.unitPrice }}</td>
+        <td>{{ p.unitsInStock }}</td>
+        <td>
+            <a href="{{ url_for('product.edit', id=p.productId) }}">Editar</a>
+            <a href="{{ url_for('product.delete', id=p.productId) }}" onclick="return confirm('¿Eliminar producto?')">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

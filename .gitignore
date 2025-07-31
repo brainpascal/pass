@@ -1,0 +1,19 @@
+# Entornos virtuales
+venv/
+#.env
+
+# Archivos de bases de datos o temporales
+*.sqlite3
+*.pyc
+__pycache__/
+instance/
+.mypy_cache/
+.cache/
+
+# Archivos del editor
+.vscode/
+.idea/
+*.swp
+
+# Archivos de configuración local
+*.log   

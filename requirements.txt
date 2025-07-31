@@ -1,0 +1,15 @@
+# requirements.txt
+flask==3.0.3
+flask_sqlalchemy==3.1.1
+# Opcionalmente, para manejo de formularios y validaciones:
+flask_wtf==1.2.1
+# Opcionalmente, para migraciones de base de datos:
+flask_migrate==4.0.5
+# Opcionalmente, para manejo de .env:
+python-dotenv==1.0.1
+# Para manejar la base de datos
+pymysql
+# Criptografía de la BD Mysql
+cryptography
+
+
