@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Pedidos{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+  <h1>Lista de Pedidos</h1>
+  <a href="{{ url_for('salesorder.create') }}" class="btn btn-primary mb-3">Crear Nuevo Pedido</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Empleado</th>
+        <th>Fecha de Orden</th>
+        <th>Fecha Requerida</th>
+        <th>Fecha de Envío</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in salesorders %}
+      <tr>
+        <td>{{ order.orderId }}</td>
+        <td>{{ order.customer.contactName }}</td>
+        <td>{{ order.employee.fullName if order.employee else '' }}</td>
+        <td>{{ order.orderDate.strftime('%Y-%m-%d') if order.orderDate else '' }}</td>
+        <td>{{ order.requiredDate.strftime('%Y-%m-%d') if order.requiredDate else '' }}</td>
+        <td>{{ order.shippedDate.strftime('%Y-%m-%d') if order.shippedDate else '' }}</td>
+        <td>
+          <a href="{{ url_for('salesorder.edit', id=order.orderId) }}" class="btn btn-sm btn-warning">Editar</a>
+          <form method="post" action="{{ url_for('salesorder.delete', id=order.orderId) }}" style="display:inline-block;" onsubmit="return confirm('¿Eliminar pedido?');">
+            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

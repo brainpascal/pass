@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Editar Territorio{% endblock %}
+{% block content %}
+<div class="container mt-3">
+  <h1>Editar Territorio</h1>
+  <form method="post">
+    <div class="mb-3">
+      <label for="territoryid" class="form-label">ID de Territorio</label>
+      <input type="text" name="territoryid" id="territoryid" class="form-control" value="{{ territory.territoryId }}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="territorydescription" class="form-label">Descripción</label>
+      <input type="text" name="territorydescription" id="territorydescription" class="form-control" value="{{ territory.territorydescription }}" required maxlength="50">
+    </div>
+    <div class="mb-3">
+      <label for="regionid" class="form-label">Región</label>
+      <select name="regionid" id="regionid" class="form-select" required>
+        {% for region in regions %}
+        <option value="{{ region.regionId }}" {% if region.regionId == territory.regionId %}selected{% endif %}>{{ region.regiondescription }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{{ url_for('territory.list') }}" class="btn btn-secondary">Volver</a>
+  </form>
+</div>
+{% endblock %}

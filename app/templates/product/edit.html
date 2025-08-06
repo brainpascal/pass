@@ -1,18 +1,59 @@
 {% extends 'base.html' %}
-{% block title %}Crear Producto{% endblock %}
+{% block title %}Editar Producto{% endblock %}
+
 {% block content %}
-<h1>Nuevo Producto</h1>
-<form method="post">
-    Nombre: <input type="text" name="productName" value="{{ product.productName }}"><br>
-    Proveedor ID: <input type="text" name="supplierId"><br>
-    Categoría ID: <input type="text" name="categoryId"><br>
-    Cantidad por unidad: <input type="text" name="quantityPerUnit"><br>
-    Precio: <input type="text" name="unitPrice"><br>
-    Stock: <input type="text" name="unitsInStock"><br>
-    En pedido: <input type="text" name="unitsOnOrder"><br>
-    Nivel de reorden: <input type="text" name="reorderLevel"><br>
-    Discontinuado (S/N): <input type="text" name="discontinued"><br>
-    <button type="submit">Guardar</button>
-</form>
-<a href="{{ url_for('product.list_products') }}">Volver</a>
+<div class="container mt-5">
+  <h2 class="mb-4">Editar Producto</h2>
+  <form method="post" class="row g-3">
+    <div class="col-md-6">
+      <label for="productName" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="productName" name="productName" value="{{ product.productName }}">
+    </div>
+
+    <div class="col-md-6">
+      <label for="supplierId" class="form-label">Proveedor ID</label>
+      <input type="text" class="form-control" id="supplierId" name="supplierId" value="{{ product.supplierId }}">
+    </div>
+
+    <div class="col-md-6">
+      <label for="categoryId" class="form-label">Categoría ID</label>
+      <input type="text" class="form-control" id="categoryId" name="categoryId" value="{{ product.categoryId }}">
+    </div>
+
+    <div class="col-md-6">
+      <label for="quantityPerUnit" class="form-label">Cantidad por unidad</label>
+      <input type="text" class="form-control" id="quantityPerUnit" name="quantityPerUnit" value="{{ product.quantityPerUnit }}">
+    </div>
+
+    <div class="col-md-4">
+      <label for="unitPrice" class="form-label">Precio</label>
+      <input type="text" class="form-control" id="unitPrice" name="unitPrice" value="{{ product.unitPrice }}">
+    </div>
+
+    <div class="col-md-4">
+      <label for="unitsInStock" class="form-label">Stock</label>
+      <input type="text" class="form-control" id="unitsInStock" name="unitsInStock" value="{{ product.unitsInStock }}">
+    </div>
+
+    <div class="col-md-4">
+      <label for="unitsOnOrder" class="form-label">En pedido</label>
+      <input type="text" class="form-control" id="unitsOnOrder" name="unitsOnOrder" value="{{ product.unitsOnOrder }}">
+    </div>
+
+    <div class="col-md-6">
+      <label for="reorderLevel" class="form-label">Nivel de reorden</label>
+      <input type="text" class="form-control" id="reorderLevel" name="reorderLevel" value="{{ product.reorderLevel }}">
+    </div>
+
+    <div class="col-md-6">
+      <label for="discontinued" class="form-label">Discontinuado (S/N)</label>
+      <input type="text" class="form-control" id="discontinued" name="discontinued" value="{{ product.discontinued }}">
+    </div>
+
+    <div class="col-12 mt-3">
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      <a href="{{ url_for('product.list_products') }}" class="btn btn-secondary ms-2">Cancelar</a>
+    </div>
+  </form>
+</div>
 {% endblock %}

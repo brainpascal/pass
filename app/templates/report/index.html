@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Reportes{% endblock %}
+
+{% block content %}
+  <h1>Reportes disponibles</h1>
+  <ul>
+    <li><a href="{{ url_for('report.territory_report') }}">Listado de Territorios con Región</a></li>
+    <li><a href="{{ url_for('report.product_report') }}">Listado de Productos Complejo</a></li>
+  <li><a href="{{ url_for('report.product_lista_precios') }}">Reporte Productos Raw SQL</a></li>
+  </ul>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Nuevo Pedido</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="col-md-4">{{ form.custId.label }} {{ form.custId(class="form-control") }}</div>
+            <div class="col-md-4">{{ form.employeeId.label }} {{ form.employeeId(class="form-control") }}</div>
+            <div class="col-md-4">{{ form.shipperid.label }} {{ form.shipperid(class="form-control") }}</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">{{ form.orderDate.label }} {{ form.orderDate(class="form-control") }}</div>
+            <div class="col">{{ form.requiredDate.label }} {{ form.requiredDate(class="form-control") }}</div>
+            <div class="col">{{ form.shippedDate.label }} {{ form.shippedDate(class="form-control") }}</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">{{ form.freight.label }} {{ form.freight(class="form-control") }}</div>
+            <div class="col">{{ form.shipName.label }} {{ form.shipName(class="form-control") }}</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">{{ form.shipAddress.label }} {{ form.shipAddress(class="form-control") }}</div>
+            <div class="col">{{ form.shipCity.label }} {{ form.shipCity(class="form-control") }}</div>
+            <div class="col">{{ form.shipCountry.label }} {{ form.shipCountry(class="form-control") }}</div>
+        </div>
+        <h4 class="mt-4">Detalle de Productos</h4>
+        <div id="order-details">
+            {% for detail_form in form.details %}
+                <div class="row mt-2">
+                    <div class="col">{{ detail_form.productId.label }} {{ detail_form.productId(class="form-control") }}</div>
+                    <div class="col">{{ detail_form.unitPrice.label }} {{ detail_form.unitPrice(class="form-control") }}</div>
+                    <div class="col">{{ detail_form.quantity.label }} {{ detail_form.quantity(class="form-control") }}</div>
+                    <div class="col">{{ detail_form.discount.label }} {{ detail_form.discount(class="form-control") }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Guardar Pedido</button>
+    </form>
+</div>
+{% endblock %}

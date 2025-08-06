@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Territorios{% endblock %}
+{% block content %}
+<div class="container mt-3">
+  <h1>Lista de Territorios</h1>
+  <a href="{{ url_for('territory.create') }}" class="btn btn-primary mb-3">Crear Nuevo Territorio</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Región</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for territory in territories %}
+      <tr>
+        <td>{{ territory.territoryId }}</td>
+        <td>{{ territory.territorydescription }}</td>
+        <td>{{ territory.region.regiondescription if territory.region else '' }}</td>        <td>
+          <a href="{{ url_for('territory.edit', id=territory.territoryId) }}" class="btn btn-sm btn-warning">Editar</a>
+          <form method="post" action="{{ url_for('territory.delete', id=territory.territoryId) }}" style="display:inline-block;" onsubmit="return confirm('¿Eliminar territorio?');">
+            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

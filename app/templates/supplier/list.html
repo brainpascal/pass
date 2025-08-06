@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Proveedores</h2>
+    <a href="{{ url_for('supplier_bp.create_supplier') }}" class="btn btn-success">
+      <i class="bi bi-plus-circle"></i> Nuevo Proveedor
+    </a>
+  </div>
+
+  {% if suppliers %}
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Empresa</th>
+            <th>Contacto</th>
+            <th>Cargo</th>
+            <th>Dirección</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for supplier in suppliers %}
+            <tr>
+              <td>{{ supplier.supplierId }}</td>
+              <td>{{ supplier.companyName }}</td>
+              <td>{{ supplier.contactName }}</td>
+              <td>{{ supplier.contactTitle }}</td>
+              <td>{{ supplier.address }}</td>
+              <td>
+                <a href="{{ url_for('supplier_bp.edit_supplier', id=supplier.supplierId) }}" class="btn btn-sm btn-warning" >Editar</a>
+                <form action="{{ url_for('supplier_bp.delete_supplier', id=supplier.supplierId) }}" method="post" style="display:inline;"
+                     class="d-inline"
+                      onsubmit="return confirm('¿Estás seguro de que deseas eliminar este proveedor?');">
+                  <button type="submit" class="btn btn-sm btn-danger">
+                    <i class="bi bi-trash"></i> Eliminar
+                  </button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-warning">
+      No hay proveedores cargados.
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

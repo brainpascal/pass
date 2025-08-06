@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Listado de productos (precio &ge; 10)</h2>
+    <table class="table table-striped table-bordered mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio Unitario</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.productId }}</td>
+                    <td>{{ row.productName }}</td>
+                    <td>${{ row.unitPrice }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-center">No se encontraron productos.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Reporte: Territorios{% endblock %}
+{% block content %}
+  <h1>Territorios y sus Regiones</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Territorio</th>
+        <th>Descripción</th>
+        <th>Región</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr>
+        <td>{{ row.territoryId }}</td>
+        <td>{{ row.territorydescription }}</td>
+        <td>{{ row.regiondescription }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

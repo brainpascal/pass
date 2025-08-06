@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Región{% endblock %}
+{% block content %}
+<div class="container mt-3">
+  <h1>Lista de Región</h1>
+  <a href="{{ url_for('region.create') }}" class="btn btn-primary mb-3">Crear Nueva Región</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for region in regions %}
+      <tr>
+        <td>{{ region.regionId }}</td>
+        <td>{{ region.regiondescription }}</td>
+        <td>
+          <a href="{{ url_for('region.edit', id=region.regionId) }}" class="btn btn-sm btn-warning">Editar</a>
+          <form method="post" action="{{ url_for('region.delete', id=region.regionId) }}" style="display:inline-block;" onsubmit="return confirm('¿Eliminar región?');">
+            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

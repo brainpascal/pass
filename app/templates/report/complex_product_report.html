@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Reporte Complejo: Productos{% endblock %}
+{% block content %}
+  <h1>Productos con su Categoría, Proveedor y Región</h1>
+  <p>Filtrado por precio mayor o igual a 20 y ordenado por nombre.</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Categoría</th>
+        <th>Proveedor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr>
+        <td>{{ row.productId }}</td>
+        <td>{{ row.productName }}</td>
+        <td>{{ row.unitPrice }}</td>
+        <td>{{ row.categoryName }}</td>
+        <td>{{ row.supplier }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Editar Región{% endblock %}
+{% block content %}
+<div class="container mt-3">
+  <h1>Editar Región</h1>
+  <form method="post">
+    <div class="mb-3">
+      <label for="regiondescription" class="form-label">Descripción</label>
+      <input type="text" name="regiondescription" id="regiondescription" class="form-control" value="{{ region.regiondescription }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{{ url_for('region.list') }}" class="btn btn-secondary">Volver</a>
+  </form>
+</div>
+{% endblock %}

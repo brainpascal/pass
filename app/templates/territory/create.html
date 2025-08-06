@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Crear Territorio{% endblock %}
+{% block content %}
+<div class="container mt-3">
+  <h1>Crear Nuevo Territorio</h1>
+  <form method="post">
+    <div class="mb-3">
+      <label for="territoryid" class="form-label">ID de Territorio</label>
+      <input type="text" name="territoryid" id="territoryid" class="form-control" required maxlength="20">
+    </div>
+    <div class="mb-3">
+      <label for="territorydescription" class="form-label">Descripción</label>
+      <input type="text" name="territorydescription" id="territorydescription" class="form-control" required maxlength="50">
+    </div>
+    <div class="mb-3">
+      <label for="regionid" class="form-label">Región</label>
+      <select name="regionid" id="regionid" class="form-select" required>
+        <option value="">Seleccione una región</option>
+        {% for region in regions %}
+        <option value="{{ region.regionid }}">{{ region.regiondescription }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{{ url_for('territory.list') }}" class="btn btn-secondary">Volver</a>
+  </form>
+</div>
+{% endblock %}
